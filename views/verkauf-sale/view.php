@@ -71,6 +71,9 @@ $this->registerCssFile('../web/css/light-gallery.css', ['depends' => [yii\web\Jq
         <a href="">
             <img class="img-responsive" src="/web/images/verkaufSale/'.$model->verkaufsnummer_sale_id."/".$files[$i].'">
         </a>
+        <a href="/web/verkauf-sale/delete-file?id='.$model->verkaufsnummer_sale_id."&name=".$files[$i].'" title="Delete" aria-label="Delete" data-pjax="0" 
+        data-confirm="Are you sure you want to delete this image?" data-method="post">
+        <span class="glyphicon glyphicon-trash"></span></a>
     </li>';
             //  echo "<img width=300 src='/web/images/fzgBestand/".$model->id."/".$files[$i]."'>";
         }

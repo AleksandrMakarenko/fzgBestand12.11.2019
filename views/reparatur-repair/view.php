@@ -61,6 +61,9 @@ $this->params['breadcrumbs'][] = $this->title;
             <a href="">
                 <img class="img-responsive" src="/web/images/reparaturRepair/'.$model->reparatursnummer_repairs_id."/".$files[$i].'">
             </a>
+            <a href="/web/reparatur-repair/delete-file?id='.$model->reparatursnummer_repairs_id."&name=".$files[$i].'" title="Delete" aria-label="Delete" data-pjax="0"
+             data-confirm="Are you sure you want to delete this image?" data-method="post">
+             <span class="glyphicon glyphicon-trash"></span></a>
         </li>';
                 //  echo "<img width=300 src='/web/images/fzgBestand/".$model->id."/".$files[$i]."'>";
             }

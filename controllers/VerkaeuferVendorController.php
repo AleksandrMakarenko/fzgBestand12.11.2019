@@ -131,6 +131,13 @@ class VerkaeuferVendorController extends Controller
 
         return $this->redirect(['index']);
     }
+    public function actionDeleteFile($id,$name)
+    {
+        $path=Yii::getAlias('@app').'/web/images/verkaeuferVendor/'.$id."/".$name;
+        unlink($path);
+
+        return $this->redirect(['view','id'=>$id]);
+    }
 
     /**
      * Finds the VerkaeuferVendor model based on its primary key value.

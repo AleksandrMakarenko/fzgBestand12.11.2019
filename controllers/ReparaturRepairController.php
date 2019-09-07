@@ -133,6 +133,13 @@ class ReparaturRepairController extends Controller
 
         return $this->redirect(['index']);
     }
+    public function actionDeleteFile($id,$name)
+    {
+        $path=Yii::getAlias("@app")."/web/images/reparaturRepair/".$id."/".$name;
+        unlink($path);
+
+        return $this->redirect(['view', 'id'=>$id ]);
+    }
 
     /**
      * Finds the ReparaturRepair model based on its primary key value.

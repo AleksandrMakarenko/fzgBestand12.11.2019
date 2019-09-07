@@ -7,9 +7,11 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\VerkaufSaleSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
-<div class="verkauf-sale-search">
-
+<?php
+$this->registerCssFile('../web/css/site.css', ['depends' => [yii\web\JqueryAsset::className()]]);
+?>
+<div class="verkauf-sale-search hidden">
+    <?= Html::a('x', null, ['class' => 'btn_1 btn-success_1','onclick'=>'openFilterVerkaufSale()']) ?>
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
@@ -25,17 +27,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nettopreis_net_price') ?>
 
-    <?php // echo $form->field($model, 'mws_value_added_tax') ?>
+    <?php echo $form->field($model, 'mws_value_added_tax') ?>
 
-    <?php // echo $form->field($model, 'bruttopreis_gross_price') ?>
+    <?php echo $form->field($model, 'bruttopreis_gross_price') ?>
 
-    <?php // echo $form->field($model, 'gewinn_profit') ?>
+    <?php echo $form->field($model, 'gewinn_profit') ?>
 
-    <?php // echo $form->field($model, 'zahlungsmethode_payment_method') ?>
+    <?php echo $form->field($model, 'zahlungsmethode_payment_method') ?>
 
-    <?php // echo $form->field($model, 'zahlungsdatum_payment_date') ?>
+    <?php echo $form->field($model, 'zahlungsdatum_payment_date') ?>
 
-    <?php // echo $form->field($model, 'sonstiges_other') ?>
+    <?php echo $form->field($model, 'sonstiges_other') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
@@ -45,3 +47,6 @@ use yii\widgets\ActiveForm;
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php
+$this->registerJsFile('../web/js/filter.js', ['depends' => [yii\web\JqueryAsset::className()]]);
+?>

@@ -10,15 +10,17 @@ use yii\grid\GridView;
 $this->title = 'Verkauf Sales';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 <div class="verkauf-sale-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
+        <?= Html::a('Open Filter', null, ['class' => 'btn btn-success','onclick'=>'openFilterVerkaufSale()']) ?>
         <?= Html::a('Create Verkauf Sale', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -31,12 +33,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'verkaufsdatum_sale_date',
             'kaeufersname_customersname:ntext',
             'nettopreis_net_price',
-            //'mws_value_added_tax',
-            //'bruttopreis_gross_price',
-            //'gewinn_profit',
-            //'zahlungsmethode_payment_method:ntext',
-            //'zahlungsdatum_payment_date',
-            //'sonstiges_other:ntext',
+            'mws_value_added_tax',
+            'bruttopreis_gross_price',
+            'gewinn_profit',
+            'zahlungsmethode_payment_method:ntext',
+            'zahlungsdatum_payment_date',
+            'sonstiges_other:ntext',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

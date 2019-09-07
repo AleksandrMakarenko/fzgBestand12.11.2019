@@ -9,7 +9,7 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="einkauf-purchase-search">
-
+    <?= Html::a('x', null, ['class' => 'btn_1 btn-success_1','onclick'=>'openFilterEinkaufPurchase()']) ?>
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
@@ -25,15 +25,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'netto_preis_net_price') ?>
 
-    <?php // echo $form->field($model, 'mws_value_added_tax') ?>
+    <?php  echo $form->field($model, 'mws_value_added_tax') ?>
 
-    <?php // echo $form->field($model, 'brutto_preis_gross_price') ?>
+    <?php  echo $form->field($model, 'brutto_preis_gross_price') ?>
 
-    <?php // echo $form->field($model, 'bezahlungsdatum_pay_date') ?>
+    <?php  echo $form->field($model, 'bezahlungsdatum_pay_date') ?>
 
-    <?php // echo $form->field($model, 'zahlungsmethode_payment_method') ?>
+    <?php  echo $form->field($model, 'zahlungsmethode_payment_method') ?>
 
-    <?php // echo $form->field($model, 'sonstiges_other') ?>
+    <?php  echo $form->field($model, 'sonstiges_other') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

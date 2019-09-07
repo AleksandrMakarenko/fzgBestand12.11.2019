@@ -131,6 +131,13 @@ class VerkaufSaleController extends Controller
 
         return $this->redirect(['index']);
     }
+    public function actionDeleteFile($id,$name)
+    {
+        $path=Yii::getAlias('@app').'/web/images/verkaufSale/'.$id."/".$name;
+        unlink($path);
+
+        return $this->redirect(['view','id'=>$id]);
+    }
 
     /**
      * Finds the VerkaufSale model based on its primary key value.

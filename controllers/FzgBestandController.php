@@ -129,6 +129,34 @@ class FzgBestandController extends Controller
 
         return $this->redirect(['index']);
     }
+    public function actionDeleteFile($id,$name)
+    {
+        $path=Yii::getAlias('@app').'/web/images/fzgBestand/'.$id."/".$name;
+        unlink($path);
+        return $this->redirect(['view', 'id' => $id]);
+    }
+    /*public function actionTest()
+    {
+        $model=new FzgBestand();
+        $model->nr='1111';
+        $model->ek_datum='2015-01-01';
+        $model->modell='ZAZ969';
+        $model->verkaeufer='Barski & Barski';
+        $model->fin='a0001';
+        $model->ek_netto_preis=10000;
+        $model->ek_mwst=100;
+        $model->ek_brutto_preis=11000;
+        $model->vk_datum='2011-12-12';
+        $model->kaeufer='Michael Schuemacher';
+        $model->vk_netto_preis=12000;
+        $model->vk_mwst=2000;
+        $model->vk_brutto_preis=14000;
+        $model->gewinn=13000;
+        $model->sonstiges='There is not an Information in this column';
+        //var_dump($model->save());
+        //var_dump($model->getErrors());Exit();
+        $model->save();
+    }*/
 
     /**
      * Finds the FzgBestand model based on its primary key value.

@@ -10,15 +10,15 @@ use yii\grid\GridView;
 $this->title = 'Kaeufer Customers';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 <div class="kaeufer-customer-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
+        <?= Html::a('Open Filter', null, ['class' => 'btn btn-success','onclick'=>'openFilterKaeuferCustomer()']) ?>
         <?= Html::a('Create Kaeufer Customer', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -31,8 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'telefonnummer_phonenumber',
             'email:email',
             'anschrift_adress:ntext',
-            //'unternehmersform_kind_of_customer',
-            //'sonstiges_other:ntext',
+            'unternehmersform_kind_of_customer',
+            'sonstiges_other:ntext',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -7,9 +7,11 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\ReparaturRepairSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
-<div class="reparatur-repair-search">
-
+<?php
+$this->registerCssFile('../web/css/site.css', ['depends' => [yii\web\JqueryAsset::className()]]);
+?>
+<div class="reparatur-repair-search hidden">
+    <?= Html::a('x', null, ['class' => 'btn_1 btn-success_1','onclick'=>'openFilterReparaturRepair()']) ?>
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
@@ -25,9 +27,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'reparatursort_repair_place') ?>
 
-    <?php // echo $form->field($model, 'reparatursinhalt_repair_content') ?>
+    <?php  echo $form->field($model, 'reparatursinhalt_repair_content') ?>
 
-    <?php // echo $form->field($model, 'sonstiges_other') ?>
+    <?php  echo $form->field($model, 'sonstiges_other') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
@@ -37,3 +39,6 @@ use yii\widgets\ActiveForm;
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php
+$this->registerJsFile('../web/js/filter.js', ['depends' => [yii\web\JqueryAsset::className()]]);
+?>

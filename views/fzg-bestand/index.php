@@ -10,15 +10,18 @@ use yii\grid\GridView;
 $this->title = 'Fzg Bestands';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 <div class="fzg-bestand-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
+        <?= Html::a('Open Filter', null, ['class' => 'btn btn-success', 'onclick'=>'openFilterFzgBestand()']) ?>
+
         <?= Html::a('Create Fzg Bestand', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

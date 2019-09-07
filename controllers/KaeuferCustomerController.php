@@ -129,6 +129,12 @@ class KaeuferCustomerController extends Controller
 
         return $this->redirect(['index']);
     }
+    public function actionDeleteFile($id,$name)
+    {
+        $path=Yii::getAlias('@app').'/web/images/kaeuferCustomer/'.$id."/".$name;
+        unlink($path);
+        return $this->redirect(['view','id'=>$id]);
+    }
 
     /**
      * Finds the KaeuferCustomer model based on its primary key value.

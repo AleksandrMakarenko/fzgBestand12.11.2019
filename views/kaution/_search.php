@@ -7,9 +7,11 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\KautionerSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
-<div class="kaution-search">
-
+<?php
+$this->registerCssFile('../web/css/site.css', ['depends' => [yii\web\JqueryAsset::className()]]);
+?>
+<div class="kaution-search hidden">
+    <?= Html::a('x', null, ['class' => 'btn_1 btn-success_1','onclick'=>'openFilterKaution()']) ?>
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
@@ -25,9 +27,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'zahlungsdatum_payment_date') ?>
 
-    <?php // echo $form->field($model, 'zahlungsform_form_of_payment') ?>
+    <?php  echo $form->field($model, 'zahlungsform_form_of_payment') ?>
 
-    <?php // echo $form->field($model, 'sonstiges_other') ?>
+    <?php  echo $form->field($model, 'sonstiges_other') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
@@ -37,3 +39,6 @@ use yii\widgets\ActiveForm;
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php
+$this->registerJsFile('../web/js/filter.js', ['depends' => [yii\web\JqueryAsset::className()]]);
+?>

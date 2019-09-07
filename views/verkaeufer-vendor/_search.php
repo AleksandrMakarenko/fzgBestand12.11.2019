@@ -7,9 +7,11 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\VerkaeuferVendorSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
-<div class="verkaeufer-vendor-search">
-
+<?php
+$this->registerCssFile('../web/css/site.css', ['depends' => [yii\web\JqueryAsset::className()]]);
+?>
+<div class="verkaeufer-vendor-search hidden">
+    <?= Html::a('x', null, ['class' => 'btn_1 btn-success_1', 'onclick'=>'openFilterVerkaeuferVendor()']) ?>
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
@@ -25,9 +27,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'anschrift_adress') ?>
 
-    <?php // echo $form->field($model, 'unternehmersform_kind_of_customer') ?>
+    <?php echo $form->field($model, 'unternehmersform_kind_of_customer') ?>
 
-    <?php // echo $form->field($model, 'sonstiges_other') ?>
+    <?php echo $form->field($model, 'sonstiges_other') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
@@ -37,3 +39,6 @@ use yii\widgets\ActiveForm;
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php
+$this->registerJsFile('../web/js/filter.js', ['depends' => [yii\web\JqueryAsset::className()]]);
+?>

@@ -128,6 +128,12 @@ class EinkaufPurchaseController extends Controller
 
         return $this->redirect(['index']);
     }
+    public function actionDeleteFile($id, $name)
+    {
+        $path = Yii::getAlias('@app') .'/web/images/einkaufPurchase/'. $id.'/'.$name;
+        unlink($path);
+        return $this->redirect(['view','id'=>$id]);
+    }
 
     /**
      * Finds the EinkaufPurchase model based on its primary key value.
