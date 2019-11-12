@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\FzgBestand;
 use Yii;
 use app\models\VerkaufSale;
 use app\models\VerkaufSaleSearch;
@@ -37,6 +38,7 @@ class VerkaufSaleController extends Controller
     {
         $searchModel = new VerkaufSaleSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->pagination = ['pageSize' => 50];
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -128,9 +130,12 @@ class VerkaufSaleController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        $model=FzgBestand::findOne($id);
+        $model->vk_status=0;
+        $model ->save();
         return $this->redirect(['index']);
     }
+
     public function actionDeleteFile($id,$name)
     {
         $path=Yii::getAlias('@app').'/web/images/verkaufSale/'.$id."/".$name;

@@ -18,7 +18,8 @@ class EinkaufPurchaseSearch extends EinkaufPurchase
     {
         return [
             [['nr_insite_id'], 'integer'],
-            [['verkaeufersname_vendor_name', 'einkaufsdatum_purchase_date', 'fin_vehicle_id', 'bezahlungsdatum_pay_date', 'zahlungsmethode_payment_method', 'sonstiges_other'], 'safe'],
+            [['verkaeufersname_vendor_name', 'einkaufsdatum_purchase_date', 'fin_vehicle_id', 'bezahlungsdatum_pay_date',
+                'zahlungsmethode_payment_method', 'sonstiges_other','verkaeufersnr_vendor_id'], 'safe'],
             [['netto_preis_net_price', 'mws_value_added_tax', 'brutto_preis_gross_price'], 'number'],
         ];
     }
@@ -65,12 +66,14 @@ class EinkaufPurchaseSearch extends EinkaufPurchase
             'mws_value_added_tax' => $this->mws_value_added_tax,
             'brutto_preis_gross_price' => $this->brutto_preis_gross_price,
             'bezahlungsdatum_pay_date' => $this->bezahlungsdatum_pay_date,
+            'verkaeufersnr_vendor_id' => $this->verkaeufersnr_vendor_id,
+            'fin_vehicle_id' => $this->fin_vehicle_id,
         ]);
 
         $query->andFilterWhere(['like', 'verkaeufersname_vendor_name', $this->verkaeufersname_vendor_name])
-            ->andFilterWhere(['like', 'fin_vehicle_id', $this->fin_vehicle_id])
-            ->andFilterWhere(['like', 'zahlungsmethode_payment_method', $this->zahlungsmethode_payment_method])
-            ->andFilterWhere(['like', 'sonstiges_other', $this->sonstiges_other]);
+              ->andFilterWhere(['like', 'zahlungsmethode_payment_method', $this->zahlungsmethode_payment_method])
+              ->andFilterWhere(['like', 'sonstiges_other', $this->sonstiges_other]);
+
 
         return $dataProvider;
     }

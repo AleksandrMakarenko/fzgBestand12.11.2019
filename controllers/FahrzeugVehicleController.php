@@ -37,6 +37,7 @@ class FahrzeugVehicleController extends Controller
     {
         $searchModel = new FahrzeugVehicleSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->pagination = ['pageSize' => 50];
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -75,7 +76,7 @@ class FahrzeugVehicleController extends Controller
         $model = new FahrzeugVehicle();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->fin_vehicle_number]);
+            return $this->redirect(['view', 'id' => $model->nr_inside_id]);
         }
 
         return $this->render('create', [

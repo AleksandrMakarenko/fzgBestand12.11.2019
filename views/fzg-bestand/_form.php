@@ -30,6 +30,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'ek_brutto_preis')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'vk_status')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'vk_datum')->textInput() ?>
 
     <?= $form->field($model, 'kaeufer')->textarea(['rows' => 6]) ?>
@@ -41,6 +43,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'vk_brutto_preis')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'gewinn')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'mitarbeiter_employee')->textarea(['rows' => 2]) ?>
 
     <?= $form->field($model, 'sonstiges')->textarea(['rows' => 6]) ?>
     <input type="file" id="files" name="pictures[]" multiple />

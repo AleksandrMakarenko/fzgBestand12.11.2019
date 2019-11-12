@@ -1,5 +1,7 @@
 <?php
 
+use app\models\VerkaeuferVendor;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -14,7 +16,21 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nr_insite_id')->textInput() ?>
 
-    <?= $form->field($model, 'verkaeufersname_vendor_name')->textarea(['rows' => 6]) ?>
+   
+    <div class="form-group field-select required">
+        <label class="control-label" for="select">Verkaeufersname (Vendor Name)</label>
+        <select id="select" class="form-control" name="EinkaufPurchase[verkaeufersname_vendor_name]" aria-required="true" onchange="updateVendorId()" >
+<?php
+$vendors=VerkaeuferVendor::find()->all();
+foreach ($vendors as $vendor)
+{
+   echo '<option data-id="'.$vendor->verkaeufersnummer_vendor_id.'" value="'.$vendor->verkaeufersname_vendor_name.'" >'.$vendor->verkaeufersname_vendor_name.' </option>';
+}
+
+?>
+    </select>
+        </div>
+    <?= $form->field($model, 'verkaeufersnr_vendor_id')->textInput() ?>
 
     <?= $form->field($model, 'einkaufsdatum_purchase_date')->textInput() ?>
 
@@ -31,6 +47,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'zahlungsmethode_payment_method')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'sonstiges_other')->textarea(['rows' => 6]) ?>
+
 
     <input type="file" id="files" name="pictures[]" multiple />
     <output id="list"></output>
@@ -56,4 +73,10 @@ use yii\widgets\ActiveForm;
 
     <?php ActiveForm::end(); ?>
 </div>
-
+<?php
+$this->registerCssFile('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css');
+$this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js',
+    ['depends' => [yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('../web/js/select2.js',
+    ['depends' => [yii\web\JqueryAsset::className()]]);
+?>

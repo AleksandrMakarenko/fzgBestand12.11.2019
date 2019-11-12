@@ -1,5 +1,6 @@
 <?php
 
+use app\models\KaeuferCustomer;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -18,7 +19,25 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'verkaufsdatum_sale_date')->textInput() ?>
 
-    <?= $form->field($model, 'kaeufersname_customersname')->textarea(['rows' => 6]) ?>
+
+<!--    --><?//= $form->field($model, 'kaeufersname_customersname')->textInput() ?>
+    <div class="form-group field-select required">
+        <label class="control-label" for="select">Verkaeufersname (Vendor Name)</label>
+        <select id="select" class="form-control" name="VerkaufSale[kaeufersname_customer_name]" aria-required="true" onchange="updateCustomerId()" >
+            <?php
+            $customers=KaeuferCustomer::find()->all();
+            foreach ($customers as $customer)
+            {
+                echo '<option data-id="'.$customer->kaeufersnummer_customer_id.'" value="'.$customer->kaufersname_customer_name.'" >'
+                    .$customer->kaufersname_customer_name.' </option>';
+            }
+            ?>
+        </select>
+    </div>
+
+    <?= $form->field($model, 'kaeufersnummer_customer_id')->textInput() ?>
+
+
 
     <?= $form->field($model, 'nettopreis_net_price')->textInput(['maxlength' => true]) ?>
 
@@ -28,9 +47,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'gewinn_profit')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'zahlungsmethode_payment_method')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'zahlungsmethode_payment_method')->textInput() ?>
 
     <?= $form->field($model, 'zahlungsdatum_payment_date')->textInput() ?>
+
+    <?= $form->field($model, 'mitarbeiter_employee')->textInput() ?>
 
     <?= $form->field($model, 'sonstiges_other')->textarea(['rows' => 6]) ?>
 
@@ -62,3 +83,10 @@ use yii\widgets\ActiveForm;
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php
+$this->registerCssFile('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css');
+$this->registerJsFile('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js',
+    ['depends' => [yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('../web/js/select2.js',
+    ['depends' => [yii\web\JqueryAsset::className()]]);
+?>

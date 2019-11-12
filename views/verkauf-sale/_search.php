@@ -11,7 +11,7 @@ use yii\widgets\ActiveForm;
 $this->registerCssFile('../web/css/site.css', ['depends' => [yii\web\JqueryAsset::className()]]);
 ?>
 <div class="verkauf-sale-search hidden">
-    <?= Html::a('x', null, ['class' => 'btn_1 btn-success_1','onclick'=>'openFilterVerkaufSale()']) ?>
+    <?= Html::a('x', null, ['class' => 'filterClose','onclick'=>'openFilter()']) ?>
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
@@ -25,6 +25,8 @@ $this->registerCssFile('../web/css/site.css', ['depends' => [yii\web\JqueryAsset
 
     <?= $form->field($model, 'kaeufersname_customersname') ?>
 
+    <?= $form->field($model, 'kaeufersnummer_customer_id') ?>
+
     <?= $form->field($model, 'nettopreis_net_price') ?>
 
     <?php echo $form->field($model, 'mws_value_added_tax') ?>
@@ -37,11 +39,13 @@ $this->registerCssFile('../web/css/site.css', ['depends' => [yii\web\JqueryAsset
 
     <?php echo $form->field($model, 'zahlungsdatum_payment_date') ?>
 
+    <?php echo $form->field($model, 'mitarbeiter_employee') ?>
+
     <?php echo $form->field($model, 'sonstiges_other') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary', 'onclick'=>'resetFilter()']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

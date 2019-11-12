@@ -37,6 +37,7 @@ class KaeuferCustomerController extends Controller
     {
         $searchModel = new KaeuferCustomerSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->pagination = ['pageSize' => 50];
 
         return $this->render('index', [
             'searchModel' => $searchModel,

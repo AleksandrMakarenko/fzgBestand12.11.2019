@@ -1,5 +1,6 @@
 <?php
 
+use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -10,6 +11,7 @@ $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Fzg Bestands', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
+
 ?>
 <div class="fzg-bestand-view">
 
@@ -38,12 +40,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'ek_netto_preis',
             'ek_mwst',
             'ek_brutto_preis',
+            'vk_status',
             'vk_datum',
             'kaeufer:ntext',
             'vk_netto_preis',
             'vk_mwst',
             'vk_brutto_preis',
             'gewinn',
+            'mitarbeiter_employee',
             'sonstiges:ntext',
         ],
     ]) ?>

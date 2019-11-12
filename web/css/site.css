@@ -113,83 +113,51 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
-.fzg-bestand-search {
+.fzg-bestand-search,.fahrzeug-vehicle-search,.einkauf-purchase-search,.kaeufer-customer-search,
+.kaution-search,.reparatur-repair-search,.verkaeufer-vendor-search,.verkauf-sale-search,.mitarbeiter-employee-search {
     position: absolute;
     top: 120px;
     left: 30px;
     background-color: bisque;
     padding: 20px;
-    width: 230px;
+    width: 250px;
 
 }
-.fahrzeug-vehicle-search{
-    position: absolute;
-    top: 120px;
-    left: 30px;
-    background-color: bisque;
-    padding: 20px;
-    width: 230px;
-
-}
-.einkauf-purchase-search{
-    position: absolute;
-    top: 120px;
-    left: 30px;
-    background-color: bisque;
-    padding: 20px;
-    width: 230px;
-}
-.kaeufer-customer-search{
-    position: absolute;
-    top: 120px;
-    left: 30px;
-    background-color: bisque;
-    padding: 20px;
-    width: 230px;
-}
-.kaution-search{
-    position: absolute;
-    top: 120px;
-    left: 30px;
-    background-color: bisque;
-    padding: 20px;
-    width: 230px;
-}
-.reparatur-repair-search{
-    position: absolute;
-    top: 120px;
-    left: 30px;
-    background-color: bisque;
-    padding: 20px;
-    width: 230px;
-}
-.verkaeufer-vendor-search{
-    position: absolute;
-    top: 120px;
-    left: 30px;
-    background-color: bisque;
-    padding: 20px;
-    width: 230px;
-}
-.verkauf-sale-search{
-    position: absolute;
-    top: 120px;
-    left: 30px;
-    background-color: bisque;
-    padding: 20px;
-    width: 230px;
-}
-.btn_1{
+.filterClose{
     padding-left: 5px;
     padding-top: 0px;
     padding-right: 5px;
     padding-bottom: 2px;
     position: relative;
-    left: 191px;
+    left: 209px;
     top: -18px;
     cursor: pointer;
- }
-.btn-success_1 {
     color: #fff;
     background-color: darkgrey;
+ }
+.linkToAnotherTable{
+    color: initial;
+    background-color: #71dd8a;
+    border-color: #4cae4c;
+    margin-left: 2px;
+    width: 200px;
+    display: inline-block;
+    margin-bottom: 2px;
+    font-weight: normal;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 5px solid transparent;
+    padding: 6px 13px;
+    font-size: 12px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }

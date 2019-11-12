@@ -1,24 +1,13 @@
-function openFilterFzgBestand(){
-    document.querySelector('.fzg-bestand-search').classList.toggle('hidden');
+function openFilter(){
+    document.querySelector('[class*="-search"]').classList.toggle('hidden');
 }
-function openFilterFahrzeugVehicle(){
-    document.querySelector('.fahrzeug-vehicle-search').classList.toggle('hidden');
+function openLinks() {
+    document.querySelector('.openLinks').classList.toggle('hidden');
 }
-function openFilterEinkaufPurchase() {
-    document.querySelector('.einkauf-purchase-search').classList.toggle('hidden');
+function resetFilter() {
+  location.href=location.origin+location.pathname+'#openFilter';
 }
-function openFilterKaeuferCustomer() {
-    document.querySelector('.kaeufer-customer-search').classList.toggle('hidden');
-}
-function openFilterKaution() {
-    document.querySelector('.kaution-search').classList.toggle('hidden');
-}
-function openFilterReparaturRepair() {
-    document.querySelector('.reparatur-repair-search').classList.toggle('hidden');
-}
-function  openFilterVerkaeuferVendor(){
-    document.querySelector('.verkaeufer-vendor-search').classList.toggle('hidden');
-}
-function  openFilterVerkaufSale(){
-    document.querySelector('.verkauf-sale-search').classList.toggle('hidden');
+if(location.hash=='#openFilter')
+{
+    openFilter();
 }

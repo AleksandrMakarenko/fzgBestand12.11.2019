@@ -17,6 +17,7 @@ use Yii;
  * @property string $bezahlungsdatum_pay_date
  * @property string $zahlungsmethode_payment_method
  * @property string $sonstiges_other
+ * @property string $verkaeufersnr_vendor_id
  */
 class EinkaufPurchase extends \yii\db\ActiveRecord
 {
@@ -34,10 +35,13 @@ class EinkaufPurchase extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nr_insite_id', 'verkaeufersname_vendor_name', 'einkaufsdatum_purchase_date', 'fin_vehicle_id', 'netto_preis_net_price', 'mws_value_added_tax', 'brutto_preis_gross_price', 'bezahlungsdatum_pay_date', 'zahlungsmethode_payment_method', 'sonstiges_other'], 'required'],
-            [['nr_insite_id'], 'integer'],
+            [['nr_insite_id', 'verkaeufersname_vendor_name', 'verkaeufersnr_vendor_id','einkaufsdatum_purchase_date', 'fin_vehicle_id',
+                'netto_preis_net_price', 'mws_value_added_tax', 'brutto_preis_gross_price', 'bezahlungsdatum_pay_date',
+                'zahlungsmethode_payment_method', 'sonstiges_other'], 'required'],
+            [['nr_insite_id','verkaeufersnr_vendor_id'], 'integer'],
             [['verkaeufersname_vendor_name', 'zahlungsmethode_payment_method', 'sonstiges_other'], 'string'],
-            [['einkaufsdatum_purchase_date', 'bezahlungsdatum_pay_date'], 'safe'],
+            [['einkaufsdatum_purchase_date','bezahlungsdatum_pay_date'], 'date','format'=>'php:Y-m-d','message' => 'richtiges Datumformat JJJJ-MM-TT '],
+           // [['bezahlungsdatum_pay_date'], 'date','format'=>'php:Y-m-d','message' => ' yyyy-mm-dd '],
             [['netto_preis_net_price', 'mws_value_added_tax', 'brutto_preis_gross_price'], 'number'],
             [['fin_vehicle_id'], 'string', 'max' => 15],
         ];
@@ -49,16 +53,56 @@ class EinkaufPurchase extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'nr_insite_id' => 'Nr Insite ID',
-            'verkaeufersname_vendor_name' => 'Verkaeufersname Vendor Name',
-            'einkaufsdatum_purchase_date' => 'Einkaufsdatum Purchase Date',
-            'fin_vehicle_id' => 'Fin Vehicle ID',
-            'netto_preis_net_price' => 'Netto Preis Net Price',
-            'mws_value_added_tax' => 'Mws Value Added Tax',
-            'brutto_preis_gross_price' => 'Brutto Preis Gross Price',
-            'bezahlungsdatum_pay_date' => 'Bezahlungsdatum Pay Date',
-            'zahlungsmethode_payment_method' => 'Zahlungsmethode Payment Method',
-            'sonstiges_other' => 'Sonstiges Other',
+            'nr_insite_id' => 'Nr (Inside ID)',
+            'verkaeufersname_vendor_name' => 'Verkaeufersname (Vendor Name)',
+            'einkaufsdatum_purchase_date' => 'Einkaufsdatum (Purchase Date)',
+            'fin_vehicle_id' => 'Fin (Vehicle ID)',
+            'netto_preis_net_price' => 'Netto Preis (Net Price)',
+            'mws_value_added_tax' => 'Mws Value (Added Tax)',
+            'brutto_preis_gross_price' => 'Brutto Preis (Gross Price)',
+            'bezahlungsdatum_pay_date' => 'Bezahlungsdatum (Pay Date)',
+            'zahlungsmethode_payment_method' => 'Zahlungsmethode (Payment Method)',
+            'sonstiges_other' => 'Sonstiges (Other)',
+            'verkaeufersnr_vendor_id'=>'Verkaeufersnr (Vendor Id)',
         ];
+    }
+    public function beforeSave($insert)
+    {
+        if($this->isNewRecord&&!(FzgBestand::findOne($this->nr_insite_id)))
+        {   $fzg_b=new FzgBestand();
+            $fzg_b->id=$this->nr_insite_id;
+            $fzg_b->verkaeufer=$this->verkaeufersname_vendor_name;
+            $fzg_b->ek_datum=$this->einkaufsdatum_purchase_date;
+            $fzg_b->fin=$this->fin_vehicle_id;
+            $fzg_b->ek_netto_preis=$this->netto_preis_net_price;
+            $fzg_b->ek_mwst=$this->mws_value_added_tax;
+            $fzg_b->ek_brutto_preis=$this->brutto_preis_gross_price;
+            $fzg_b->save();
+          /*$fzg_b->modell=null;
+            $fzg_b->nr=null;
+            $fzg_b->vk_datum=null;
+            $fzg_b->kaeufer=null;
+            $fzg_b->vk_netto_preis=null;
+            $fzg_b->vk_mwst=null;
+            $fzg_b->vk_brutto_preis=null;
+            $fzg_b->gewinn=null;
+            $fzg_b->mitarbeiter_employee=null;
+            $fzg_b->sonstiges=null;
+            $fzg_b->save();*/
+           // var_dump($fzg_b->getErrors());Exit();
+        }
+        else if($fzg_b = FzgBestand::findOne($this->nr_insite_id)){
+            if( !($fzg_b->fin)){
+                $fzg_b->fin=$this->fin_vehicle_id;
+            }
+            $fzg_b->verkaeufer=$this->verkaeufersname_vendor_name;
+            $fzg_b->ek_datum=$this->einkaufsdatum_purchase_date;
+            $fzg_b->ek_netto_preis=$this->netto_preis_net_price;
+            $fzg_b->ek_mwst=$this->mws_value_added_tax;
+            $fzg_b->ek_brutto_preis=$this->brutto_preis_gross_price;
+            $fzg_b->save();
+            //var_dump($fzg_b->getErrors());Exit();
+        }
+        return parent::beforeSave($insert); // TODO: Change the autogenerated stub
     }
 }

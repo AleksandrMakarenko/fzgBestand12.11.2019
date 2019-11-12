@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\FahrzeugVehicleSearch */
+/* @var $model app\models\MitarbeiterEmployeeSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <?php
 $this->registerCssFile('../web/css/site.css', ['depends' => [yii\web\JqueryAsset::className()]]);
 ?>
-<div class="fahrzeug-vehicle-search hidden" >
+<div class="mitarbeiter-employee-search hidden">
     <?= Html::a('x', null, ['class' => 'filterClose','onclick'=>'openFilter()']) ?>
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -19,17 +19,19 @@ $this->registerCssFile('../web/css/site.css', ['depends' => [yii\web\JqueryAsset
 
     <?= $form->field($model, 'nr_inside_id') ?>
 
-    <?= $form->field($model, 'fin_vehicle_number') ?>
+    <?= $form->field($model, 'initialen_initials') ?>
 
-    <?= $form->field($model, 'alte_nr_old_insite_number') ?>
+    <?= $form->field($model, 'vorname_firstname') ?>
 
-    <?= $form->field($model, 'modell_car_model') ?>
+    <?= $form->field($model, 'nachname_surname') ?>
 
-    <?= $form->field($model, 'herstellungsjahr_manufacturing_jear') ?>
+    <?= $form->field($model, 'geburtsdatum_birthdate') ?>
 
-    <?php  echo $form->field($model, 'verkaufsstatus_sale_state') ?>
+    <?php  echo $form->field($model, 'anstellungsdatum_employmentdate') ?>
 
-    <?php  echo $form->field($model, 'bilder_images') ?>
+    <?php  echo $form->field($model, 'kündigungsdatum_terminationdate') ?>
+
+    <?php  echo $form->field($model, 'gehalt_salary') ?>
 
     <?php  echo $form->field($model, 'sonstiges_other') ?>
 

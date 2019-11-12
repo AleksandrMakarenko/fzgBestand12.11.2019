@@ -8,13 +8,13 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="einkauf-purchase-search">
-    <?= Html::a('x', null, ['class' => 'btn_1 btn-success_1','onclick'=>'openFilterEinkaufPurchase()']) ?>
+<div class="einkauf-purchase-search hidden">
+
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
-
+    <?= Html::a('x', null, ['class' => 'filterClose','onclick'=>'openFilter()']) ?>
     <?= $form->field($model, 'nr_insite_id') ?>
 
     <?= $form->field($model, 'verkaeufersname_vendor_name') ?>
@@ -33,13 +33,18 @@ use yii\widgets\ActiveForm;
 
     <?php  echo $form->field($model, 'zahlungsmethode_payment_method') ?>
 
+    <?php  echo $form->field($model, 'verkaeufersnr_vendor_id') ?>
+
     <?php  echo $form->field($model, 'sonstiges_other') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary', 'onclick'=>'resetFilter()']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php
+$this->registerJsFile('../web/js/filter.js', ['depends' => [yii\web\JqueryAsset::className()]]);
+?>

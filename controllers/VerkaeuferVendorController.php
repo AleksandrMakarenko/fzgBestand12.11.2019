@@ -37,6 +37,7 @@ class VerkaeuferVendorController extends Controller
     {
         $searchModel = new VerkaeuferVendorSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->pagination = ['pageSize' => 50];
 
         return $this->render('index', [
             'searchModel' => $searchModel,

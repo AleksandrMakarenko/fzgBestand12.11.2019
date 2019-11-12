@@ -32,6 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'verkaufsnummer_sale_id',
             'fin_vehicle_id',
             'verkaufsdatum_sale_date',
+            'kaeufersnummer_customer_id',
             'kaeufersname_customersname:ntext',
             'nettopreis_net_price',
             'mws_value_added_tax',
@@ -39,6 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'gewinn_profit',
             'zahlungsmethode_payment_method:ntext',
             'zahlungsdatum_payment_date',
+            'mitarbeiter_employee',
             'sonstiges_other:ntext',
         ],
     ]) ?>

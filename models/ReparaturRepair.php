@@ -45,13 +45,13 @@ class ReparaturRepair extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'reparatursnummer_repairs_id' => 'Reparatursnummer Repairs ID',
-            'fin_vehicle_id' => 'Fin Vehicle ID',
-            'reparatursdatum_repairs_date' => 'Reparatursdatum Repairs Date',
-            'reparaturskosten_repair_costs' => 'Reparaturskosten Repair Costs',
-            'reparatursort_repair_place' => 'Reparatursort Repair Place',
-            'reparatursinhalt_repair_content' => 'Reparatursinhalt Repair Content',
-            'sonstiges_other' => 'Sonstiges Other',
+            'reparatursnummer_repairs_id' => 'Reparaturs Nummer (Repairs ID)',
+            'fin_vehicle_id' => 'Fin (Vehicle ID)',
+            'reparatursdatum_repairs_date' => 'Reparatursdatum (Repairs Date)',
+            'reparaturskosten_repair_costs' => 'Reparaturskosten (Repair Costs)',
+            'reparatursort_repair_place' => 'Reparatursort (Repair Place)',
+            'reparatursinhalt_repair_content' => 'Reparatursinhalt (Repair Content)',
+            'sonstiges_other' => 'Sonstiges (Other)',
         ];
     }
 }

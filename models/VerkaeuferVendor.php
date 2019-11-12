@@ -45,13 +45,13 @@ class VerkaeuferVendor extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'verkaeufersnummer_vendor_id' => 'Verkaeufersnummer Vendor ID',
-            'verkaeufersname_vendor_name' => 'Verkaeufersname Vendor Name',
-            'telefonnummer_phone_number' => 'Telefonnummer Phone Number',
+            'verkaeufersnummer_vendor_id' => 'Verkaeufersnummer (Vendor ID)',
+            'verkaeufersname_vendor_name' => 'Verkaeufersname (Vendor Name)',
+            'telefonnummer_phone_number' => 'Telefonnummer (Phone Number)',
             'email' => 'Email',
-            'anschrift_adress' => 'Anschrift Adress',
-            'unternehmersform_kind_of_customer' => 'Unternehmersform Kind Of Customer',
-            'sonstiges_other' => 'Sonstiges Other',
+            'anschrift_adress' => 'Anschrift (Adress)',
+            'unternehmersform_kind_of_customer' => 'Unternehmersform (Kind Of Customer)',
+            'sonstiges_other' => 'Sonstiges (Other)',
         ];
     }
 }

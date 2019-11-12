@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\ReparaturRepair;
-use app\models\ReparaturRepairSearch;
+use app\models\MitarbeiterEmployee;
+use app\models\MitarbeiterEmployeeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ReparaturRepairController implements the CRUD actions for ReparaturRepair model.
+ * MitarbeiterEmployeeController implements the CRUD actions for MitarbeiterEmployee model.
  */
-class ReparaturRepairController extends Controller
+class MitarbeiterEmployeeController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class ReparaturRepairController extends Controller
     }
 
     /**
-     * Lists all ReparaturRepair models.
+     * Lists all MitarbeiterEmployee models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ReparaturRepairSearch();
+        $searchModel = new MitarbeiterEmployeeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination = ['pageSize' => 50];
 
@@ -46,37 +46,36 @@ class ReparaturRepairController extends Controller
     }
 
     /**
-     * Displays a single ReparaturRepair model.
-     * @param integer $id
+     * Displays a single MitarbeiterEmployee model.
+     * @param string $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-        $path=Yii::getAlias("@app")."/web/images/reparaturRepair/".$id;
+        $path=Yii::getAlias("@app")."/web/images/mitarbeiterEmployee/".$id;
         $files=[];
-        if(is_dir($path))
-        {
+        if(is_dir($path)){
             $files=scandir($path);
         }
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'path'=>$path,
+            'path' =>$path,
             'files'=>$files
         ]);
     }
 
     /**
-     * Creates a new ReparaturRepair model.
+     * Creates a new MitarbeiterEmployee model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new ReparaturRepair();
+        $model = new MitarbeiterEmployee();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->reparatursnummer_repairs_id]);
+            return $this->redirect(['view', 'id' => $model->initialen_initials]);
         }
 
         return $this->render('create', [
@@ -85,25 +84,26 @@ class ReparaturRepairController extends Controller
     }
 
     /**
-     * Updates an existing ReparaturRepair model.
+     * Updates an existing MitarbeiterEmployee model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            //var_dump($_FILES);
+            //var_dump($_FILES["pictures"]["error"]);
             foreach ($_FILES["pictures"]["error"] as $key => $error) {
                 if ($error == UPLOAD_ERR_OK) {
                     $tmp_name = $_FILES["pictures"]["tmp_name"][$key];
                     // basename() может спасти от атак на файловую систему;
                     // может понадобиться дополнительная проверка/очистка имени файла
                     $name = basename($_FILES["pictures"]["name"][$key]);
-                    $path=Yii::getAlias("@app")."/web/images/reparaturRepair/".$id;
-                    //$path=Yii::getAlias("@app")."/web/images/".(new FahrzeugVehicle())::tableName()."/".$id;
+                    $path=Yii::getAlias("@app")."/web/images/mitarbeiterEmployee/".$id;
+                    //$path=Yii::getAlias("@app")."/web/images/".(new MitarbeiterEmployee())::tableName()."/".$id;
                     //var_dump($path);Exit;
                     if(!file_exists($path))
                     {
@@ -113,7 +113,7 @@ class ReparaturRepairController extends Controller
                     move_uploaded_file($tmp_name, $path."/".rand().'.'.$type[1]);
                 }
             }
-            return $this->redirect(['view', 'id' => $model->reparatursnummer_repairs_id]);
+            return $this->redirect(['view', 'id' => $model->initialen_initials]);
         }
 
         return $this->render('update', [
@@ -122,9 +122,9 @@ class ReparaturRepairController extends Controller
     }
 
     /**
-     * Deletes an existing ReparaturRepair model.
+     * Deletes an existing MitarbeiterEmployee model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -136,22 +136,21 @@ class ReparaturRepairController extends Controller
     }
     public function actionDeleteFile($id,$name)
     {
-        $path=Yii::getAlias("@app")."/web/images/reparaturRepair/".$id."/".$name;
+        $path=Yii::getAlias("@app")."/web/images/mitarbeiterEmployee/".$id."/".$name;
         unlink($path);
 
         return $this->redirect(['view', 'id'=>$id ]);
     }
-
     /**
-     * Finds the ReparaturRepair model based on its primary key value.
+     * Finds the MitarbeiterEmployee model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return ReparaturRepair the loaded model
+     * @param string $id
+     * @return MitarbeiterEmployee the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = ReparaturRepair::findOne($id)) !== null) {
+        if (($model = MitarbeiterEmployee::findOne($id)) !== null) {
             return $model;
         }
 

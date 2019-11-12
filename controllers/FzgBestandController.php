@@ -35,8 +35,10 @@ class FzgBestandController extends Controller
      */
     public function actionIndex()
     {
+
         $searchModel = new FzgBestandSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->pagination = ['pageSize' => 50];
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -134,6 +136,12 @@ class FzgBestandController extends Controller
         $path=Yii::getAlias('@app').'/web/images/fzgBestand/'.$id."/".$name;
         unlink($path);
         return $this->redirect(['view', 'id' => $id]);
+    }
+    public function actionSumGewinn($gewinn)
+    {
+        $sum=array_sum([$gewinn]);
+
+        return $sum;
     }
     /*public function actionTest()
     {

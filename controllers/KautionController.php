@@ -37,6 +37,7 @@ class KautionController extends Controller
     {
         $searchModel = new KautionerSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->pagination = ['pageSize' => 50];
 
         return $this->render('index', [
             'searchModel' => $searchModel,

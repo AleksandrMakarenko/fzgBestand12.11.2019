@@ -31,6 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'nr_insite_id',
             'verkaeufersname_vendor_name:ntext',
+            'verkaeufersnr_vendor_id',
             'einkaufsdatum_purchase_date',
             'fin_vehicle_id',
             'netto_preis_net_price',

@@ -37,6 +37,7 @@ class EinkaufPurchaseController extends Controller
     {
         $searchModel = new EinkaufPurchaseSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->pagination = ['pageSize' => 50];
 
         return $this->render('index', [
             'searchModel' => $searchModel,

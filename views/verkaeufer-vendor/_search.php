@@ -11,7 +11,7 @@ use yii\widgets\ActiveForm;
 $this->registerCssFile('../web/css/site.css', ['depends' => [yii\web\JqueryAsset::className()]]);
 ?>
 <div class="verkaeufer-vendor-search hidden">
-    <?= Html::a('x', null, ['class' => 'btn_1 btn-success_1', 'onclick'=>'openFilterVerkaeuferVendor()']) ?>
+    <?= Html::a('x', null, ['class' => 'filterClose', 'onclick'=>'openFilter()']) ?>
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
@@ -33,7 +33,7 @@ $this->registerCssFile('../web/css/site.css', ['depends' => [yii\web\JqueryAsset
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary', 'onclick'=>'resetFilter()']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

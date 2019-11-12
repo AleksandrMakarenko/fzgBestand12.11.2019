@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'verkaeufersnummer_vendor_id')->textInput() ?>
 
-    <?= $form->field($model, 'verkaeufersname_vendor_name')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'verkaeufersname_vendor_name')->textInput() ?>
 
     <?= $form->field($model, 'telefonnummer_phone_number')->textInput(['maxlength' => true]) ?>
 

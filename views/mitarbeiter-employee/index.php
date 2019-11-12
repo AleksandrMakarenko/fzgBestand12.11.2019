@@ -4,13 +4,12 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\KaeuferCustomerSearch */
+/* @var $searchModel app\models\MitarbeiterEmployeeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Kaeufer Customers';
+$this->title = 'Mitarbeiter Employees';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
 <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 <div class="openLinks hidden">
     <?= Html::a('Go to Fahrzeug(Vechicle)', 'http://yii2/web/fahrzeug-vehicle/index', ['class' => 'linkToAnotherTable']) ?>
@@ -24,14 +23,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= Html::a('Go to Verkauf(Sale)', 'http://yii2/web/verkauf-sale', ['class' => 'linkToAnotherTable']) ?>
 
 </div>
-<div class="kaeufer-customer-index">
+<div class="mitarbeiter-employee-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
+
     <p>
-        <?= Html::a('Open Filter', null, ['class' => 'btn btn-success','onclick'=>'openFilter()']) ?>
-        <?= Html::a('Create Kaeufer Customer', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Open Filter', null, ['class' => 'btn btn-success', 'onclick'=>'openFilter()']) ?>
+        <?= Html::a('Create Mitarbeiter Employee', ['create'], ['class' => 'btn btn-success']) ?>
         <?= Html::a('Open Go to ', null, ['class' => 'btn btn-success', 'onclick'=>'openLinks()']) ?>
     </p>
+
+
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -39,21 +41,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'kaeufersnummer_customer_id',
-            'kaufersname_customer_name:ntext',
-            'telefonnummer_phonenumber',
-            'email:email',
-            'anschrift_adress:ntext',
-            'unternehmersform_kind_of_customer',
+            'nr_inside_id',
+            'initialen_initials',
+            'vorname_firstname',
+            'nachname_surname',
+            'geburtsdatum_birthdate',
+            'anstellungsdatum_employmentdate',
+            'kündigungsdatum_terminationdate',
+            'gehalt_salary',
             'sonstiges_other:ntext',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+
     <style>
         .grid-view th {
             white-space: pre-wrap;
         }
     </style>
-
 </div>
